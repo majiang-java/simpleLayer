@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/simpleLayer.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            var layer =  $("#cect").layer({
+                target:"layer"
+            });
+
+            $("#cect").hover(function(){
+                layer.showLayer();
+            },function(){
+                layer.closeLayer();
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="layer" style="display:none;border:solid red;">fefrwerwerewrwe erwetwetwerwererw</div>
+<div id="cect">234</div>
+
+</body>
+</html>
