@@ -1,12 +1,12 @@
 ;(function(){
     var Layer = function(ele,opt){
         this.$element = ele,
-            this.targetEle,
-            this.defaults = {
-                'position':'absolute',
-                'z-index':999
-            },
-            this.options = $.extend({},this.defaults,opt)
+        this.targetEle,
+        this.defaults = {
+            'position':'absolute',
+            'z-index':999
+        },
+        this.options = $.extend({},this.defaults,opt)
     }
     Layer.prototype = {
         beauty:function(){
@@ -31,7 +31,9 @@
             this.targetEle.hide();
         }
 
+
     }
+
     $.fn.layer = function(option){
         var  target = new Layer(this,option);
         target.beauty();

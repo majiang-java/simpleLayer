@@ -12,18 +12,32 @@
                 target:"layer"
             });
 
-            $("#cect").hover(function(){
-                layer.showLayer();
+
+            $("#layer").hover(function(){
+                $(this).addClass("hover");
             },function(){
+                $(this).removeClass("hover");
                 layer.closeLayer();
+            })
+           $("#cect").hover(function(){
+               layer.showLayer();
+            },function(){
+                setTimeout(function(){
+                    //console($("#layer").hasClass("hover"));
+                    if(!$("#layer").hasClass("hover")){
+                        layer.closeLayer();
+                    }
+                },500);
             });
+
+
         });
 
 
     </script>
 </head>
 <body>
-<div id="layer" style="display:none;border:solid red;">fefrwerwerewrwe erwetwetwerwererw</div>
+<div id="layer" style="display:none;border:solid red; width:300px">fefrwerwerewrwe erwetwetwerwererwfefrwerwerewrwe erwetwetwerwererfefrwerwerewrwe erwetwetwerwerer</div>
 <div id="cect">234</div>
 
 </body>
