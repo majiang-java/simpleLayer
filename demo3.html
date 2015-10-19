@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<link lang="en">
+
+    <meta charset="UTF-8">
+    <title>二次封装</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.css"/>
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+</head>
+<body>
+<div id="234">34</div>
+<script>
+    (function($) {
+        $.extend($.fn, {
+             showInfo: function (options) {
+                var id = "info_" + (new Date()).getTime(), $dialog = null;
+                var _option = {
+                    title: "提示信息",
+                    autoOpen: true,
+                    height: options.height || 220,
+                    width: options.width || 400,
+                    body: options.content | "",
+                    close: function () {
+                        if ($dialog) {
+                            $dialog.dialog('close');
+                            $dialog.dialog('destroy');
+                            $dialog.remove();
+
+                        }
+                    },
+                    buttons: {
+                        '确定': function () {
+                            $(this).dialog('close')
+                            $(this).remove();
+                        }
+                    }
+
+                }
+
+                $.extend(_option, options);
+                var $div = $("<div/>", {id: id, style: 'text-indent:80px;line-height:113px'});
+                $div.html(_option.body);
+                $div.addClass("info-img");
+                $dialog = $div.dialog(_option);
+                return $dialog;
+            }
+        });
+    }(jQuery));
+
+    $(function(){
+        var dialog = $("#123").showInfo({
+            body:'234'
+        });
+        dialog.dialog('open');
+    });
+</script>
+</body>
+</html>
